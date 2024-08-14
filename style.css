@@ -1,0 +1,573 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0; 
+}
+
+html,
+body {
+    height: 600px;
+    width: 780px;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    background-color: #fdfdfd;
+    position: relative;
+    overflow: hidden;
+}
+
+.mainBackgroud {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 0;
+}
+
+/* --- mainBackgroud --- */
+/* --- flipBox --- */
+.flipBox {
+    height: 100%;
+    width: 100%;
+    perspective: 1000px;
+}
+.flipBox_inner, 
+.flipBox_front,
+.flipBox_left, 
+.flipBox_back,
+.flipBox_right {
+    height: 100%;
+    width: 100%;
+}
+.flipBox_front>img,
+.flipBox_left>img, 
+.flipBox_back>img,
+.flipBox_right>img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.flipBox_inner {
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+.flipBox_inner-goRight {
+    transform: translate(50%, 0) rotateY(90deg) translate(50%, 0);
+}
+.flipBox_inner-goLeft {
+    transform: translate(-50%, 0) rotateY(-90deg) translate(-50%, 0);
+}
+.flipBox_inner-goLeft180 {
+    transform: translate(50%, 0) rotateY(90deg) translate(100%, 0) rotateY(90deg) translate(50%, 0);
+}
+.flipBox:hover .flipBox_inner {
+    /* transform: translate(50%, 0) rotateY(90deg) translate(50%, 0); */ /*右轉 90*/
+    /* transform: translate(-50%, 0) rotateY(-90deg) translate(-50%, 0); */ /*左轉 90*/
+    transform: translate(50%, 0) rotateY(90deg) translate(100%, 0) rotateY(90deg) translate(50%, 0); /*右轉 180*/
+    /* transform: translate(-50%, 0) rotateY(-90deg) translate(-100%, 0) rotateY(-90deg) translate(-50%, 0); */ /*左轉 180*/
+    /* transform: translate(50%, 0) rotateY(90deg) translate(100%, 0) rotateY(90deg) translate(100%, 0) rotateY(90deg) translate(100%, 0) rotateY(90deg) translate(50%, 0); */ /*右轉 360*/
+}
+.flipBox_front,
+.flipBox_left,
+.flipBox_back,
+.flipBox_right {
+    position: absolute;
+    /* -webkit_backface-visibility: hidden;
+    backface-visibility: hidden; */ /*mark*/
+}
+.flipBox_front {
+    background-color: #00eeff;
+}
+.flipBox_left {
+    background-color: #6572ff;
+    transform: translate(-50%, 0) rotateY(270deg) translate(-50%, 0);
+}
+.flipBox_back {
+    transform: translate(50%, 0) rotateY(90deg) translate(50%, 0);
+    background-color: #1101ff;
+}
+.flipBox_right {
+    background-color: #9900ff;
+    transform: translate(50%, 0) rotateY(90deg) translate(100%, 0) rotateY(90deg) translate(50%, 0);
+}
+
+/* --- mainContent --- */
+/* --- div_backgroundContainer1 --- */
+.mainContent {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 1;
+}
+.mainContent-animation {
+    animation-name: toOpacity;
+    animation-duration: 0.4s;
+}
+@keyframes toOpacity {
+    0% {
+        opacity: 1;
+    }
+    10% {
+        opacity: 0.5;
+    }
+    20% {
+        opacity: 0;
+      }
+    80% {
+        opacity: 0;
+      }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+         opacity: 1;
+    }
+}
+.div_backgroundContainer1 {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.btn_likeLocation {
+    background: transparent;
+    border: 0;
+    outline: 0;
+}
+.btn_likeLocation>svg:hover{
+    cursor: pointer;
+  }
+.btn_turnLeft {
+    height: 40px;
+    width: 40px;
+    background-color: #00000000;
+    border-width: 0;
+    display: none;
+    cursor: pointer;
+}
+.btn_turnLeft-show {
+    display: block;
+}
+.btn_turnRight {
+    height: 40px;
+    width: 40px;
+    background-color: #00000000;
+    border-width: 0;
+    display: none;
+    cursor: pointer;
+}
+.btn_turnRight-show {
+    display: block;
+}
+.div_onPageName {
+    height: 35%;
+    width: 100%;
+    text-align: center;
+    line-height: auto;
+    color: #676767;
+    font-size: medium;
+}
+.div_pageBar {
+    height: 40%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.btn_dotDefault {
+    height: 15px;
+    width: 15px;
+    margin: 5px 8px;
+    border-style: solid;
+    border-width: 5px;
+    border-radius: 15px;
+    border-color: #828282;
+    background-color: #00000000;
+    /* display: none; */
+    cursor: pointer;
+}
+/* .btn_dotDefault-display {
+    display: block;
+} */
+.btn_dotDefault-selected {
+    border-color: #343434;
+}
+.btn_dotDefault:hover {
+    height: 20px;
+    width: 20px;
+}
+.btn_dot {
+    height: 15px;
+    width: 15px;
+    margin: 5px 8px;
+    border-width: 0;
+    border-radius: 15px;
+    background-color: #828282;
+    cursor: pointer;
+}
+.btn_dot-selected {
+    background-color: #343434;
+}
+.btn_dot:hover {
+    height: 20px;
+    width: 20px;
+}
+/* - dropdown menu - */
+.row {
+    width: 500px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    padding: 5px 20px;
+    border: 1px solid #0F1035;
+}
+#search_input {
+    flex: 1;
+    height: 40px;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    font-size: 18px;
+    line-height: 40px;
+    color: #333;
+    padding-left: 20px;
+}
+.search_Icon {
+    height: 100%;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    display: flex;
+    align-items: center;
+}
+::placeholder {
+    color: #555;
+}
+#btn_dropdownMenu {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+#location-container {
+    width: 500px;
+    height: 50%;
+    border: 1px solid #808080;
+    border-radius: 15px;
+    margin-top: 5px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.4);
+    background: inherit;
+    overflow: hidden;
+    position: absolute;
+    overflow-y: auto;
+}
+li {
+    padding: 10px 30px;
+    background-color: #88A3B8;
+    cursor: pointer;
+}
+li:hover {
+    background-color: #ccd3d3;
+}
+.enName {
+    font-weight: lighter;
+    font-size: smaller;
+}
+/* - Temperature - */
+.changeTemperature {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.btn_Temperature {
+    position: relative;
+    font-weight: bolder;
+    font-size: 30px;
+    color: #0F1035;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: 0;
+}
+
+/* --- div_backgroundContainer2 --- */
+.div_backgroundContainer2 {
+    height: 35%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.div_backgroundContainer2>div:nth-child(1) {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.div_backgroundContainer2>div:nth-child(2) {
+    height: 100%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.weather {
+    display: flex;
+    align-items: center;
+    justify-content: cneter;
+    gap: 20px;
+}
+.fix-bar {
+    display: flex;
+    align-items: center;
+    justify-content: cneter;
+}
+#date {
+    font-size: 20px;
+    color: #0F1035;
+}
+.mainTemperature {
+    font-size: 100px;
+    color: #0F1035;
+}
+.max-min-temp {
+    color: #0F1035;
+}
+.div_backgroundContainer2>div:nth-child(3) {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- div_backgroundContainer3 --- */
+.div_backgroundContainer3 {
+    height: 40%;
+    width: 100%;
+}
+.body { 
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    /* padding-top: 200px;
+    margin: 100px; */
+}
+.container {
+    height: 100%;
+    width: 100%; 
+    overflow-x: auto; 
+    white-space: nowrap; 
+    -webkit-overflow-scrolling: touch; 
+}
+.image-container { 
+    display: block; 
+    font-size: 0; 
+    height: 100%;
+    width: 100%; 
+}
+.bordered-box { 
+    display: inline-block; 
+    vertical-align: top; 
+    border: 1px solid black; 
+    border-radius: 20px; 
+    /* height: 250px;  */
+    height: 90%;
+    width: 150px; 
+    margin: 0 10px; 
+    padding: 10px; 
+    box-sizing: border-box; 
+    font-size: 16px; 
+    text-align: center; 
+    justify-content: space-between;
+    align-items: center;
+}
+.bordered-box2 { 
+    display: inline-block; 
+    vertical-align: top; 
+    border: 1px solid black; 
+    border-radius: 20px; 
+    /* height: 250px;  */
+    height: 90%;
+    width: 150px; 
+    margin: 0 10px; 
+    padding: 10px; 
+    box-sizing: border-box; 
+    font-size: 16px; 
+    text-align: center; 
+    justify-content: space-between;
+    align-items: center;
+}
+.bordered-box3 { 
+    display: inline-block; 
+    vertical-align: top; 
+    border: 1px solid black; 
+    border-radius: 20px; 
+    /* height: 250px;  */
+    height: 90%;
+    width: 150px; 
+    margin: 0 10px; 
+    padding: 10px; 
+    box-sizing: border-box; 
+    font-size: 16px; 
+    text-align: center; 
+    justify-content: space-between;
+    align-items: center;
+}
+.bordered-box4 { 
+    display: inline-block; 
+    vertical-align: top; 
+    border: 1px solid black; 
+    border-radius: 20px; 
+    /* height: 250px;  */
+    height: 90%;
+    width: 150px; 
+    margin: 0 10px; 
+    padding: 10px; 
+    box-sizing: border-box; 
+    font-size: 16px; 
+    text-align: center; 
+    justify-content: space-between;
+    align-items: center;
+}
+.bordered-box5 { 
+    display: inline-block; 
+    vertical-align: top; 
+    border: 1px solid black; 
+    border-radius: 20px; 
+    /* height: 250px;  */
+    height: 90%;
+    width: 150px; 
+    margin: 0 10px; 
+    padding: 10px; 
+    box-sizing: border-box; 
+    font-size: 16px; 
+    text-align: center; 
+    justify-content: space-between;
+    align-items: center;
+}
+.bordered-box6 { 
+    display: inline-block; 
+    vertical-align: top; 
+    border: 1px solid black; 
+    border-radius: 20px; 
+    /* height: 250px;  */
+    height: 90%;
+    width: 150px; 
+    margin: 0 10px; 
+    padding: 10px; 
+    box-sizing: border-box; 
+    font-size: 16px; 
+    text-align: center; 
+    justify-content: space-between;
+    align-items: center;
+}
+.bordered-box img { 
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    margin: 10px 0; 
+} 
+.top-text, .bottom-text { 
+    font-size: 16px; 
+    color: black; 
+} 
+::-webkit-scrollbar { 
+    display: none; 
+} 
+.A { 
+    background-image: url('https://www.hko.gov.hk/images/HKOWxIconOutline/pic63.png'); 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-size: contain;
+    height: 100px;
+    width: 100px;
+    margin-left: 15px;
+    margin-top:25px;
+} 
+.B { 
+    background-image: url('https://www.hko.gov.hk/images/HKOWxIconOutline/pic80.png'); 
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-size: contain; 
+    height: 100px;
+    width: 100px;
+    margin-left: 15px;
+    margin-top:25px;
+}
+.C { 
+    background-image: url('https://www.hko.gov.hk/images/HKOWxIconOutline/pic82.png'); 
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-size: contain; 
+    height: 100px;
+    width: 100px;
+    margin-left: 15px;
+    margin-top:25px;
+}
+.D { 
+    background-image: url('https://www.hko.gov.hk/images/HKOWxIconOutline/pic52.png'); 
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-size: contain; 
+    height: 100px;
+    width: 100px;
+    margin-left: 15px;
+    margin-top:25px;
+}
+.E { 
+    background-image: url('https://www.hko.gov.hk/images/HKOWxIconOutline/pic50.png'); 
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-size: contain; 
+    height: 100px;
+    width: 100px;
+    margin-left: 15px;
+    margin-top:25px;
+}
+.F { 
+    background-image: url('https://www.hko.gov.hk/images/HKOWxIconOutline/pic73.png'); 
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-size: contain; 
+    height: 100px;
+    width: 100px;
+    margin-left: 15px;
+    margin-top:25px;
+}
+.G { 
+    background-image: url('https://www.hko.gov.hk/images/HKOWxIconOutline/pic65.png'); 
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-size: contain; 
+    height: 100px;
+    width: 100px;
+    margin-left: 15px;
+    margin-top:25px;
+}
+
+/* --- div_backgroundContainer4 --- */
+.div_backgroundContainer4 {
+    height: 10%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

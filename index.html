@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+        <section class="mainBackgroud">
+            <div class="flipBox">
+                <div id="flipBox_inner" class="flipBox_inner">
+                    <div class="flipBox_front">
+                        <img src="./background.jpeg" alt="background">
+                    </div>
+                    <div class="flipBox_left">
+                        <img src="./background.jpeg" alt="background">
+                    </div>
+                    <div class="flipBox_back">
+                        <img src="./background.jpeg" alt="background">
+                    </div>
+                    <div class="flipBox_right">
+                        <img src="./background.jpeg" alt="background">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="mainContent" class="mainContent">
+            <div class="div_backgroundContainer1">
+                <!-- Test -->
+                <!-- <button id="btn_AALocation">AA</button>
+                <button id="btn_BBLocation">BB</button>
+                <button id="btn_CCLocation">CC</button>
+                <button id="btn_DDLocation">DD</button>
+                <button id="btn_EELocation">EE</button> 
+                <p id="p_showLocation"></p> -->
+                <!-- <button id="btn_test">test</button> -->
+
+                <button id="btn_likeLocation" class="btn_likeLocation">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="#0F1035" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" /></svg>
+                </button>
+                <div class="search-box" autocomplete="off">
+                    <div class="row" style="position: relative;">
+                        <div class="search_Icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"fill="none" stroke="#0F1035" stroke-width="2" stroke-linecap="round"stroke-linejoin="round" class="lucide lucide-map-pin"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle cx="12" cy="10" r="3" /></svg>
+                        </div>
+                        <div id="search_input">
+                            <span class="enName">Select your location</span>
+                        </div>
+                        <button id="btn_dropdownMenu">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0F1035"stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down"><path d="m6 9 6 6 6-6" /></svg>
+                        </button>
+                    </div>
+                    <div id="location-container" hidden>
+                        <ul id="location-options">
+                            
+                        </ul>
+                    </div> 
+                </div>
+                <div class="changeTemperature">
+                    <button class="btn_Temperature tempUnit" id="btn_Temperature">°C</button>
+                </div>
+            </div>
+            <div class="div_backgroundContainer2">
+                <div>
+                    <button id="btn_turnLeft" class="btn_turnLeft">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-left"><path d="M6 8L2 12L6 16"/><path d="M2 12H22"/></svg>
+                    </button> 
+                </div>
+                <div>
+                    <div id="date">Date</div>
+                    <div>
+                        <span id="temperature" class="mainTemperature">75</span><span class="tempUnit mainTemperature">°C</span>
+                    </div>
+                    <div class="weather">
+                        <div>
+                            <span class="max-min-temp">H:</span>
+                            <span id="min-temp" class="max-min-temp">75</span><span class="max-min-temp tempUnit">°C</span>
+                        </div>
+                        <div>
+                            <span class="max-min-temp">L:</span>
+                            <span id="max-temp" class="max-min-temp">75</span><span class="max-min-temp tempUnit">°C</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button id="btn_turnRight" class="btn_turnRight">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="div_backgroundContainer3">
+                <div class="body">
+                    <div class="container">
+                        <div class="image-container">
+                            <div class="bordered-box">
+                                <p class="top-text"></p>
+                                <div class="A"></div>
+                                <p class="bottom-text"></p>
+                                <p class="bottom-texta"></p>
+                                <p class="bottom-textb"></p>
+                            </div>
+                            <div class="bordered-box2">
+                                <p class="top-text2"></p>
+                                <div class="B"></div>
+                                <p class="bottom-text2"></p>
+                            </div>
+                            <div class="bordered-box3">
+                                <p class="top-text3"></p>
+                                <div class="C"></div>
+                                <p class="bottom-text3"></p>
+                                <p class="bottom-text3a"></p>
+                            </div>
+                            <div class="bordered-box4">
+                                <p class="top-text4"></p>
+                                <div class="D"></div>
+                                <p class="bottom-text4"></p>
+                                <p class="bottom-text4a"></p>
+                            </div>
+                            <div class="bordered-box5">
+                                <p class="top-text5"></p>
+                                <div class="E"></div>
+                                <p class="bottom-text5"></p>
+                                <p class="bottom-text5a"></p>
+                            </div>
+                            <div class="bordered-box6">
+                                <p class="top-text6"></p>
+                                <div class="F"></div>
+                                <p class="bottom-text6"></p>
+                                <p class="bottom-text6a"></p>
+                            </div>
+                        </div>
+                        <div class="scroll-bar"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="div_backgroundContainer4">
+                <div style="height: 12%; width: 100%;"></div>
+                <div id="div_pageBar" class="div_pageBar">
+                    <button id="btn_dotDefault" class="btn_dotDefault"></button>
+                    <!-- <button id="btn_dot" class="btn_dot"></button> -->
+                </div>
+                <div id="div_onPageName" class="div_onPageName"></div>
+                <div style="height: 13%; width: 100%;"></div>
+            </div>
+        </section>
+    </main>
+</body>
+<script src="./script.js" defer></script>
+</html>
+
